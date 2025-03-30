@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.padding-m {
+  padding-left: 16%;
+  padding-right: 16%;
+  @media screen and (max-width: 1536px) {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+.padding-vertical {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.scrollTopMargin {
+  scroll-margin-top: 138px;
+  @media screen and (max-width: 1810px) {
+    scroll-margin-top: 125px;
+  }
+  @media screen and (max-width: 767px) {
+    scroll-margin-top: 85px;
+  }
+}
+
+.common-button {
+  @apply h-12 min-h-12 px-3 py-2 rounded-lg font-bold text-lg min-w-40 flex justify-center items-center cursor-pointer;
+  @apply transition disabled:opacity-70 disabled:pointer-events-none hover:opacity-85;
+  &.outlined {
+    @apply bg-white border-2 border-tertiary text-tertiary hover:bg-tertiary hover:text-white;
+  }
+  &.contained {
+    @apply bg-primary text-white;
+  }
+}

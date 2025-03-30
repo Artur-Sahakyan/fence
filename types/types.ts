@@ -1,0 +1,191 @@
+import {Control, FieldValues} from "react-hook-form";
+import {SingleValue} from "react-select";
+
+export interface Option {
+    value: string;
+    label: string;
+    message?: string;
+    flag?: string;
+};
+
+export interface SelectCompProps {
+    control: Control<FieldValues>;
+    label: string;
+    options?: Option[];
+    required?: boolean;
+    name: string;
+    value?: string | number | string[];
+    placeholder?: string;
+    errorMessage?: string;
+    handleChange?: (value: SingleValue<Option>) => void;
+    isDisabled?: boolean;
+    isLoading?: boolean;
+    className?: string;
+    isSearchable?: boolean;
+    isMulti?: boolean;
+}
+
+export type Vehicle = {
+    truck_id: string;
+    vin: string;
+    year: string;
+    make: string;
+    model: string;
+    fuel_type: string;
+    license_plate: string;
+    country_id: string;
+    state_id: string;
+    vehicle_type_Id: string;
+    vehicle_reg_type: string;
+    vehicle_class: string;
+    owned_flag: string;
+    purchased_date: string;
+    ca_date: string;
+    engine_info: string;
+    engine_manufacturer: string;
+    engine_year: string;
+    total_price: number;
+}
+
+export type VINInfo = {
+    year: string;
+    make: string;
+    model: string;
+    fuel_type: string;
+};
+
+export type LocalVINInfoResult = {
+    id: string;
+    order_id: string;
+    vin: string;
+    year: string;
+    make: string;
+    model: string;
+    fuel_type: string;
+    engine_year: string;
+    engine_manufacturer: string;
+    engine_info: string;
+    purchased_date: string;
+    license_plate: string;
+    country_id: string;
+    state_id: string;
+    vehicle_class: string;
+    vehicle_reg_type: string;
+    vehicle_type_Id: string;
+    owned_flag: string;
+    ca_date: string;
+    certificate_sent_count: string;
+    created_at: string;
+    updated_at: string;
+    expiration_date: string | null;
+    file_path: string | null;
+};
+
+export type VINInfoResponse = {
+    BedLengthIN: string;
+    BedType: string;
+    BlindSpotIntervention: string;
+    BlindSpotMon: string;
+    BodyCabType: string;
+    BodyClass: string;
+    BrakeSystemDesc: string;
+    BrakeSystemType: string;
+    BusFloorConfigType: string;
+    BusLength: string;
+    BusType: string;
+    CAN_AACN: string;
+    CIB: string;
+    CashForClunkers: string;
+    ChargerLevel: string;
+    ChargerPowerKW: string;
+    CoolingType: string;
+    CurbWeightLB: string;
+    CustomMotorcycleType: string;
+    DaytimeRunningLight: string;
+    DestinationMarket: string;
+    DisplacementCC: string;
+    DisplacementCI: string;
+    DisplacementL: string;
+    Doors: string;
+    DriveType: string;
+    EVDriveUnit: string;
+    ElectrificationLevel: string;
+    EngineConfiguration: string;
+    EngineCycles: string;
+    EngineCylinders: string;
+    EngineHP: string;
+    EngineHP_to: string;
+    EngineKW: string;
+    EngineManufacturer: string;
+    EngineModel: string;
+    EntertainmentSystem: string;
+    ErrorCode: string;
+    ErrorText: string;
+    ForwardCollisionWarning: string;
+    FuelInjectionType: string;
+    FuelTypePrimary: string;
+    FuelTypeSecondary: string;
+    GCWR: string;
+    GCWR_to: string;
+    GVWR: string;
+    GVWR_to: string;
+    KeylessIgnition: string;
+    LaneCenteringAssistance: string;
+    LaneDepartureWarning: string;
+    LaneKeepSystem: string;
+    LowerBeamHeadlampLightSource: string;
+    Make: string;
+    MakeID: string;
+    Manufacturer: string;
+    ManufacturerId: string;
+    Model: string;
+    ModelID: string;
+    ModelYear: string;
+    MotorcycleChassisType: string;
+    MotorcycleSuspensionType: string;
+    NCSABodyType: string;
+    NCSAMake: string;
+    NCSAMapExcApprovedBy: string;
+    NCSAMapExcApprovedOn: string;
+    NCSAMappingException: string;
+    NCSAModel: string;
+    NCSANote: string;
+    NonLandUse: string;
+    Note: string;
+    OtherBusInfo: string;
+    OtherEngineInfo: string;
+    OtherMotorcycleInfo: string;
+    OtherRestraintSystemInfo: string;
+    OtherTrailerInfo: string;
+    ParkAssist: string;
+    PedestrianAutomaticEmergencyBraking: string;
+    PlantCity: string;
+};
+
+export type LocalVINInfo = {
+    year: string;
+    make: string;
+    model: string;
+    fuel_type: string;
+    engine_year: string;
+    engine_manufacturer: string;
+    purchased_date: string;
+    license_plate: string;
+    vehicle_reg_type: string;
+    vehicle_class: string;
+    country_id: string;
+    state_id: string;
+    engine_info: string;
+    owned_flag: string;
+};
+
+export type FormInfo = {
+    id: string;
+    full_name?: string;
+    email?: string;
+    phone?: string;
+    entity_type_id?: string;
+    application_type_id: string;
+    fuel_type: string;
+    total_price?: number;
+};
