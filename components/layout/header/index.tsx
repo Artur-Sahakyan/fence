@@ -65,7 +65,7 @@ const Header = () => {
         }}
       >
         <Image
-          src={`/images/${headerType === "transparent" ? "logo" : "logo"}.png`}
+          src={`/images/logo.png`}
           alt="Truck and Bus"
           width={210}
           height={93}
