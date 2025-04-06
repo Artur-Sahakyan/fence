@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^4.1.0",
     "@next/eslint-plugin-next": "^15.1.7",
     "@react-input/mask": "^2.0.4",

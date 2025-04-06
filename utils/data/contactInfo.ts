@@ -1,5 +1,5 @@
 export const contactInfo = {
-  email: "verdgesaxper@gmail.com",
-  phone: "(800) 800-800",
-  address: "Burbank tex",
+  email: "office@secfences.com",
+  phone: "(888) 894-4289",
+  address: "Burbank",
 };

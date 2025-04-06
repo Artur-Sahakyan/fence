@@ -185,7 +185,7 @@ export type FormInfo = {
     email?: string;
     phone?: string;
     entity_type_id?: string;
-    application_type_id: string;
+    // application_type_id: string;
     fuel_type: string;
     total_price?: number;
 };

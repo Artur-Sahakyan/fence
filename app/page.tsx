@@ -1,7 +1,7 @@
 import Consequences from "@/components/home/Consequences";
 import Requirements from "@/components/home/Requirements";
 import WhoIsExempt from "@/components/home/WhoIsExempt";
-import Compliance from "@/components/home/Compliance";
+// import Compliance from "@/components/home/Compliance";
 import EngineYear from "@/components/home/EngineYear";
 import Emissions from "@/components/home/Emissions";
 import WhoNeeds from "@/components/home/WhoNeeds";
@@ -19,7 +19,7 @@ export default function Home() {
       <Banner />
       <div className="flex flex-col gap-9 bg-[#FCFCFC] padding-m padding-vertical">
         <FenceOverview />
-        <Compliance />
+        {/* <Compliance /> */}
         <Services />
         <Steps />
         <Requirements />

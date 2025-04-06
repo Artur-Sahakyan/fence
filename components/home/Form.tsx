@@ -1,4 +1,5 @@
 "use client";
+
 import React, { Fragment } from "react";
 import {
   Control,
@@ -13,6 +14,7 @@ import Button from "@/components/common/Button";
 import { Option } from "@/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { stepFirstSchema } from "@/validation/formSchema";
+import emailjs from "@emailjs/browser";
 
 type FenceFormValues = {
   full_name: string;
@@ -23,11 +25,11 @@ type FenceFormValues = {
 };
 
 interface FenceFormProps {
-  application?: Option[]; // Fence types
-  entity?: Option[]; // Property types
+  application?: Option[];
+  entity?: Option[];
 }
 
-const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
+export const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
   const methods = useForm<FenceFormValues>({
     resolver: yupResolver(
       stepFirstSchema
@@ -40,6 +42,7 @@ const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
     watch,
     handleSubmit,
     formState: { errors },
+    reset,
   } = methods;
 
   const inputsArr = [
@@ -52,7 +55,7 @@ const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
     },
     {
       name: "email",
-      label: "Email Address",
+     label: "Email Address",
       placeholder: "Enter your email address",
       type: "text",
       isSelect: false,
@@ -66,15 +69,36 @@ const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
     },
   ];
 
+  const onSubmit = async (data: FenceFormValues) => {
+    try {
+      await emailjs.send(
+        "service_t2ayhrs",
+        "template_ln8ex89",
+        {
+          full_name: data.full_name,
+          email: data.email,
+          phone: data.phone,
+          fence_type: data.fence_type,
+          property_type: data.property_type,
+        },
+        "MwDTu1ZXAHxAn7Tmk"
+      );
+
+      reset();
+    } catch (err) {
+      console.error("Email sending failed:", err);
+      alert("Failed to send message. Please try again.");
+    }
+  };
+
+  console.log(errors, ' errors')
+
   return (
     <FormProvider {...methods}>
       <div className="flex justify-center 3xl:col-span-3 xl:col-span-5">
         <form
           className="grid grid-cols-2 w-full md:grid-cols-1 gap-7 rounded-3xl bg-white p-6 max-w-[805px] 3xl:gap-4"
-          onSubmit={handleSubmit((data) => {
-            console.log("📩 Form Submitted:", data);
-            // send to API, email service, or CRM here
-          })}
+          onSubmit={handleSubmit(onSubmit)}
         >
           {inputsArr.map((item, idx) => {
             const name = item.name as keyof FenceFormValues;
@@ -85,7 +109,6 @@ const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
                     control={control as unknown as Control<FieldValues>}
                     label={item.label}
                     placeholder={item.placeholder}
-                    // options={item.options || []}
                     name={name}
                     value={watch(name) as string}
                     required={true}
@@ -119,5 +142,3 @@ const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
     </FormProvider>
   );
 };
-
-export default FenceLeadForm;

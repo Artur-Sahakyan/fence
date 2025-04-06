@@ -13,7 +13,6 @@ const FormPage = async () => {
         <main className='padding-m py-12 bg-[#FCFCFC] min-h-screen sm:py-10 bg-'>
             <h1 className='text-3xl font-bold text-black text-center mb-5'>Fill Out Your Details</h1>
             <div className='bg-form-back-drop rounded-lg pb-5 mt-8 min-h-screen'>
-                {/* <Form options={options}/> */}
                 <ContactForm/>
             </div>
         </main>

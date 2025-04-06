@@ -1,6 +1,6 @@
 "use client";
 
-import Form from "@/components/home/Form";
+import {FenceLeadForm} from "@/components/home/Form";
 import Image from "next/image";
 import React from "react";
 
@@ -23,7 +23,7 @@ const Banner = () => {
         <h1 className="text-[80px] font-bold leading-[100px] drop-shadow-custom-shadow 3xl:col-span-2 xl:col-span-5 xl:text-center xl:text-5xl md:text-3xl">
           Quality Fence Installation
         </h1>
-        <Form /> {/* Optional: Rename to FenceForm if needed */}
+        <FenceLeadForm />
       </div>
     </div>
   );

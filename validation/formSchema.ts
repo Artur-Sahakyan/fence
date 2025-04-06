@@ -49,8 +49,8 @@ export const stepFirstSchema = yup.object({
     full_name: name,
     email,
     phone,
-    application_type_id: required,
-    entity_type_id: required,
+    // application_type_id: required,
+    // entity_type_id: required,
 });
 
 
@@ -59,10 +59,10 @@ export const formSchema = yup.object({
     full_name: name,
     email,
     phone,
-    application_type_id: required,
-    entity_type_id: required,
-    motor_carrier_id: required,
-    motor_carrier_value: required,
+    // application_type_id: required,
+    // entity_type_id: required,
+    // motor_carrier_id: required,
+    // motor_carrier_value: required,
     company_name: yup.string().when('needCompanyInfo', {
         is: (val: string) => val,
         then: () => yup.string().required('Name is required.'),
