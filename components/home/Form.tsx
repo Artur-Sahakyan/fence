@@ -67,19 +67,20 @@ const FenceLeadSection = ({ onToggleForm }: FenceLeadSectionProps) => {
 
   return (
     <>
-      {/* Buttons */}
       <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 justify-center">
         {!showForm && (
-          <Button
-            onClick={() => toggleForm(true)}
-            className="w-[200px] md:w-full contained"
-            type="button"
-          >
-             Quote
-          </Button>
+          <div className="w-[200px] md:w-full">
+            <Button
+              onClick={() => toggleForm(true)}
+              className="w-full contained"
+              type="button"
+            >
+               Quote
+            </Button>
+          </div>
         )}
         <a href="tel:+1234567890" className="w-[200px] md:w-full">
-          <Button type="button" className="w-[200px] md:w-full contained">
+          <Button type="button" className="w-full contained">
             Call Now
           </Button>
         </a>

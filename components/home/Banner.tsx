@@ -24,9 +24,8 @@ const Banner = () => {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col gap-1">
-        <h1 className="text-[80px] font-bold leading-[100px] drop-shadow-custom-shadow 3xl:text-5xl xl:text-center md:text-3xl">
+        <h1 className="text-[80px] text-center font-bold leading-[100px] drop-shadow-custom-shadow 3xl:text-5xl xl:text-center md:text-3xl">
           Quality Fence Installation
         </h1>
 
