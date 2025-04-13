@@ -1,16 +1,13 @@
 "use client";
 
-import { Control, FieldValues, FormProvider, Resolver, useForm } from "react-hook-form";
-import { stepFirstSchema } from "@/validation/formSchema";
+import React, { useState } from "react";
+import { FormProvider, useForm, Resolver } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import SelectComp from "@/components/common/Select";
-import Button from "@/components/common/Button";
+import { stepFirstSchema } from "@/validation/formSchema";
 import Input from "@/components/common/Input";
-import React, { Fragment } from "react";
-import { Option } from "@/types/types";
+import Button from "@/components/common/Button";
 import emailjs from "@emailjs/browser";
 import SuccessModal from "../common/SuccessModal";
-import { useState } from "react";
 
 type FenceFormValues = {
   full_name: string;
@@ -20,51 +17,30 @@ type FenceFormValues = {
   property_type: string;
 };
 
-interface FenceFormProps {
-  application?: Option[];
-  entity?: Option[];
+interface FenceLeadSectionProps {
+  onToggleForm?: (open: boolean) => void;
 }
 
-export const FenceLeadForm = ({}: { options?: FenceFormProps }) => {
-const [isModalOpen, setIsModalOpen] = useState(false);
+const FenceLeadSection = ({ onToggleForm }: FenceLeadSectionProps) => {
+  const [showForm, setShowForm] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const methods = useForm<FenceFormValues>({
-    resolver: yupResolver(
-      stepFirstSchema
-    ) as unknown as Resolver<FenceFormValues>,
+    resolver: yupResolver(stepFirstSchema) as unknown as Resolver<FenceFormValues>,
   });
 
   const {
     register,
-    control,
     watch,
     handleSubmit,
     formState: { errors },
     reset,
   } = methods;
 
-  const inputsArr = [
-    {
-      name: "full_name",
-      label: "Full Name",
-      placeholder: "Enter your full name",
-      type: "text",
-      isSelect: false,
-    },
-    {
-      name: "email",
-     label: "Email Address",
-      placeholder: "Enter your email address",
-      type: "text",
-      isSelect: false,
-    },
-    {
-      name: "phone",
-      label: "Phone Number",
-      placeholder: "Enter your phone number",
-      type: "phone",
-      isSelect: false,
-    },
-  ];
+  const toggleForm = (state: boolean) => {
+    setShowForm(state);
+    onToggleForm?.(state);
+  };
 
   const onSubmit = async (data: FenceFormValues) => {
     try {
@@ -80,9 +56,9 @@ const [isModalOpen, setIsModalOpen] = useState(false);
         },
         process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
       );
-      
       setIsModalOpen(true);
       reset();
+      toggleForm(false);
     } catch (err) {
       console.error("Email sending failed:", err);
       alert("Failed to send message. Please try again.");
@@ -91,53 +67,87 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
-     <FormProvider {...methods}>
-      <div className="flex justify-center 3xl:col-span-3 xl:col-span-5">
-        <form
-          className="grid grid-cols-2 w-full md:grid-cols-1 gap-7 rounded-3xl bg-white p-6 max-w-[805px] 3xl:gap-4"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          {inputsArr.map((item, idx) => {
-            const name = item.name as keyof FenceFormValues;
-            return (
-              <Fragment key={idx}>
-                {item.isSelect ? (
-                  <SelectComp
-                    control={control as unknown as Control<FieldValues>}
-                    label={item.label}
-                    placeholder={item.placeholder}
-                    name={name}
-                    value={watch(name) as string}
-                    required={true}
-                    errorMessage={errors[name]?.message}
-                  />
-                ) : (
-                  <Input
-                    label={item.label}
-                    name={name}
-                    value={watch(name) as string}
-                    placeholder={item.placeholder}
-                    type={item.type}
-                    required={true}
-                    register={register}
-                    errorMessage={errors[name]?.message}
-                  />
-                )}
-              </Fragment>
-            );
-          })}
-
+      {/* Buttons */}
+      <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 justify-center">
+        {!showForm && (
           <Button
-            className="col-span-2 contained md:col-span-1"
-            isLoading={false}
-            type="submit"
+            onClick={() => toggleForm(true)}
+            className="w-[200px] md:w-full contained"
+            type="button"
           >
-            Contact Us
+             Quote
           </Button>
-        </form>
-       </div>
-     </FormProvider>
-     <SuccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        )}
+        <a href="tel:+1234567890" className="w-[200px] md:w-full">
+          <Button type="button" className="w-[200px] md:w-full contained">
+            Call Now
+          </Button>
+        </a>
+      </div>
+
+      {showForm && (
+        <FormProvider {...methods}>
+          <div className="mt-8 flex justify-center px-4">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="relative w-full max-w-[800px] bg-white text-black rounded-2xl shadow-lg p-8 grid grid-cols-2 gap-6 md:grid-cols-1"
+            >
+              <button
+                type="button"
+                onClick={() => toggleForm(false)}
+                className="absolute top-4 right-4 text-gray-600 hover:text-black text-xl font-bold"
+              >
+                ✕
+              </button>
+
+              {[
+                {
+                  name: "full_name",
+                  label: "Full Name",
+                  placeholder: "Enter your full name",
+                  type: "text",
+                },
+                {
+                  name: "email",
+                  label: "Email Address",
+                  placeholder: "Enter your email address",
+                  type: "text",
+                },
+                {
+                  name: "phone",
+                  label: "Phone Number",
+                  placeholder: "Enter your phone number",
+                  type: "phone",
+                },
+              ].map((input, idx) => (
+                <Input
+                  key={idx}
+                  label={input.label}
+                  name={input.name as keyof FenceFormValues}
+                  value={watch(input.name as keyof FenceFormValues) || ""}
+                  placeholder={input.placeholder}
+                  type={input.type}
+                  register={register}
+                  required
+                  errorMessage={errors[input.name as keyof FenceFormValues]?.message}
+                />
+              ))}
+
+              <Button
+                className="col-span-2 contained md:col-span-1"
+                isLoading={false}
+                type="submit"
+              >
+                Contact Us
+              </Button>
+            </form>
+          </div>
+        </FormProvider>
+      )}
+
+      <SuccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };
+
+export default FenceLeadSection;

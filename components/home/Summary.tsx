@@ -2,7 +2,7 @@
 
 import React from "react";
 import IconSummary1 from "@/components/icons/IconSummary1";
-import IconSummary2 from "@/components/icons/IconSummary2";
+// import IconSummary2 from "@/components/icons/IconSummary2";
 import IconSummary3 from "@/components/icons/IconSummary3";
 import IconSummary4 from "@/components/icons/IconSummary4";
 import Title from "@/components/common/Title";
@@ -15,11 +15,11 @@ const Summary = () => {
       text: "From the initial consultation to final build, we handle everything — planning, materials, permits, and expert construction.",
       icon: <IconSummary1 />,
     },
-    {
-      title: "Requirements & Planning",
-      text: "We verify your property lines, help with permits, and help you choose materials that meet local codes and personal goals.",
-      icon: <IconSummary2 />,
-    },
+    // {
+    //   title: "Requirements & Planning",
+    //   text: "We verify your property lines, help with permits, and help you choose materials that meet local codes and personal goals.",
+    //   icon: <IconSummary2 />,
+    // },
     {
       title: "Who It's For",
       text: "Homeowners, business owners, HOAs, and public spaces — anyone looking for privacy, security, or curb appeal.",

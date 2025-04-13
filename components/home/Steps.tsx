@@ -3,7 +3,7 @@
 import React from "react";
 import IconApply1 from "@/components/icons/IconApply1";
 import IconApply2 from "@/components/icons/IconApply2";
-import IconApply3 from "@/components/icons/IconApply3";
+// import IconApply3 from "@/components/icons/IconApply3";
 import IconApply4 from "@/components/icons/IconApply4";
 import Title from "@/components/common/Title";
 
@@ -17,10 +17,10 @@ const Steps = () => {
       icon: <IconApply2 />,
       text: "Choose Fence Style & Materials",
     },
-    {
-      icon: <IconApply3 />,
-      text: "Get Permits & Approvals (We Help!)",
-    },
+    // {
+    //   icon: <IconApply3 />,
+    //   text: "Get Permits & Approvals (We Help!)",
+    // },
     {
       icon: <IconApply4 />,
       text: "Professional Fence Installation",

@@ -21,11 +21,11 @@ const Consequences = () => {
       text: "Without a proper fence, kids and pets can easily wander off, creating safety hazards and neighborhood concerns.",
       image: "no-fence.png",
     },
-    {
-      title: "Property Line Disputes",
-      text: "A clearly installed fence defines ownership lines and helps avoid future issues with neighbors over shared land.",
-      image: "ence-vinyl.jpg",
-    },
+    // {
+    //   title: "Property Line Disputes",
+    //   text: "A clearly installed fence defines ownership lines and helps avoid future issues with neighbors over shared land.",
+    //   image: "ence-vinyl.jpg",
+    // },
   ];
 
   return (
@@ -44,14 +44,15 @@ const Consequences = () => {
             key={idx}
             className="grid grid-cols-2 gap-8 p-3 3xl:gap-5 md:grid-cols-1 md:p-0"
           >
-            <div className="relative xl:min-h-[234px] md:order-2">
-              <Image
-                src={`/images/${item.image}`}
-                alt={item.title}
-                fill
-                className="object-cover rounded-2xl md:object-bottom"
-              />
-            </div>
+          <div className="relative w-full h-[215px] lg:min-h-[215px]">
+            <Image
+              src={`/images/${item.image}`}
+              alt={item.title}
+              fill
+              className="object-cover rounded-2xl"
+            />
+          </div>
+
             <div className="flex flex-col gap-2 md:order-1 md:gap-[6px]">
               <h3 className="text-lg font-bold min-h-14 xl:min-h-max">
                 {item.title}

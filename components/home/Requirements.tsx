@@ -1,24 +1,24 @@
 "use client";
 
 import React from "react";
-import IconReq1 from "@/components/icons/IconReq1";
-import IconReq2 from "@/components/icons/IconReq2";
+// import IconReq1 from "@/components/icons/IconReq1";
+// import IconReq2 from "@/components/icons/IconReq2";
 import IconReq3 from "@/components/icons/IconReq3";
 import IconReq4 from "@/components/icons/IconReq4";
 import Title from "@/components/common/Title";
 
 const Requirements = () => {
   const requirements = [
-    {
-      title: "Property Line & Utility Check",
-      text: "Before installation, we verify the exact boundaries of your property and ensure there are no buried utility lines in the work zone.",
-      icon: <IconReq1 />,
-    },
-    {
-      title: "Permit Approval",
-      text: "Most cities and HOAs require a permit before a fence can be built. We assist with the process to ensure full compliance.",
-      icon: <IconReq2 />,
-    },
+    // {
+    //   title: "Property Line & Utility Check",
+    //   text: "Before installation, we verify the exact boundaries of your property and ensure there are no buried utility lines in the work zone.",
+    //   icon: <IconReq1 />,
+    // },
+    // {
+    //   title: "Permit Approval",
+    //   text: "Most cities and HOAs require a permit before a fence can be built. We assist with the process to ensure full compliance.",
+    //   icon: <IconReq2 />,
+    // },
     {
       title: "Material & Style Selection",
       text: "You’ll choose the style and materials (wood, vinyl, chain-link, etc.) that match your property and needs.",
