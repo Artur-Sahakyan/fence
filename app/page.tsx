@@ -1,37 +1,51 @@
 import Consequences from "@/components/home/Consequences";
 import Requirements from "@/components/home/Requirements";
-import WhoIsExempt from "@/components/home/WhoIsExempt";
-// import Compliance from "@/components/home/Compliance";
 import EngineYear from "@/components/home/EngineYear";
 import Emissions from "@/components/home/Emissions";
-import WhoNeeds from "@/components/home/WhoNeeds";
 import Services from "@/components/home/Services";
 import Pricing from "@/components/home/Pricing";
-import Summary from "@/components/home/Summary";
 import Banner from "@/components/home/Banner";
 import Steps from "@/components/home/Steps";
 import Faq from "@/components/home/FAQ";
-import FenceOverview from "@/components/home/WhyFence";
+import CallButton from "@/components/common/CallButton";
+
+export const metadata = {
+  title: "SecureFence | Vinyl & Privacy Fence Installation in Los Angeles",
+  description: "Affordable vinyl, privacy, picket, aluminum, and rolling gate fence installation services in Los Angeles.",
+  keywords: [
+    "vinyl fence",
+    "fencing",
+    "fence company near me",
+    "aluminium fence",
+    "rolling gate",
+    "picket fence",
+    "privacy fence",
+    "pro vinyl fencing",
+    "vinyl fence depot",
+    "gng",
+    "pacific vinyl",
+    "k star vinyl",
+    "alumission",
+    "globusgates"
+  ]
+};
+
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <Banner />
       <div className="flex flex-col gap-9 bg-[#FCFCFC] padding-m padding-vertical">
-        <FenceOverview />
-        {/* <Compliance /> */}
         <Services />
         <Steps />
         <Requirements />
-        <WhoNeeds />
         <EngineYear />
         <Emissions />
         <Pricing />
-        <WhoIsExempt />
         <Consequences />
-        <Summary />
         <Faq />
       </div>
+      <CallButton />
     </div>
   );
 }

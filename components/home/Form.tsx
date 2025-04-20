@@ -79,9 +79,9 @@ const FenceLeadSection = ({ onToggleForm }: FenceLeadSectionProps) => {
             </Button>
           </div>
         )}
-        <a href="tel:+1234567890" className="w-[200px] md:w-full">
+        <a href="/portfolio" className="w-[200px] md:w-full">
           <Button type="button" className="w-full contained">
-            Call Now
+            Portfolio
           </Button>
         </a>
       </div>

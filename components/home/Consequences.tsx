@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Title from "@/components/common/Title";
 import Image from "next/image";
 
 const Consequences = () => {
@@ -21,11 +20,6 @@ const Consequences = () => {
       text: "Without a proper fence, kids and pets can easily wander off, creating safety hazards and neighborhood concerns.",
       image: "no-fence.png",
     },
-    // {
-    //   title: "Property Line Disputes",
-    //   text: "A clearly installed fence defines ownership lines and helps avoid future issues with neighbors over shared land.",
-    //   image: "ence-vinyl.jpg",
-    // },
   ];
 
   return (
@@ -33,11 +27,6 @@ const Consequences = () => {
       className="bg-white pt-4 pb-9 px-9 rounded-2xl shadow-compliance scrollTopMargin 3xl:!p-3"
       id="consequences"
     >
-      <Title>Why You Shouldn’t Delay Installing a Fence</Title>
-      <p className="text-xl text-center font-medium mb-12 xl:text-xl xl:mb-7 xl:text-center md:text-sm">
-        Waiting too long to install a fence can lead to real issues with safety,
-        security, and peace of mind. Here’s what can happen if you hold off:
-      </p>
       <div className="grid grid-cols-2 gap-x-11 gap-y-6 3xl:gap-x-6 xl:grid-cols-1 xl:gap-3">
         {data.map((item, idx) => (
           <div

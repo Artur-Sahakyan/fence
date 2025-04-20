@@ -6,49 +6,51 @@ import TermsBlock from "@/components/terms/TermsBlock";
 const PrivacyPolicy = () => {
   const data = [
     {
-      desc: "SecureFence Installations LLC operates under securefence.com, providing professional residential and commercial fence installation services for our customers.",
+      desc: "At Secure Fences, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect the personal information of visitors to our website. We are committed to handling your data with care, transparency, and respect.",
     },
     {
-      desc: "This page outlines our policies regarding the collection, use, and disclosure of personal information when you use our website or submit a service request.",
-    },
-    {
-      desc: "By submitting your information through securefence.com, you agree to the collection and use of your data as described in this Privacy Policy. We only use your personal information to improve our services and will not share it with anyone except as described here.",
-    },
-    {
-      title: "Collection and Use of Information",
-      desc: "To provide accurate quotes or schedule consultations, we may ask for your name, phone number, email address, address, and project details. This information allows us to contact and identify you.",
-    },
-    {
-      title: "Log Data",
-      desc: "When you visit our website, we collect standard log data including your IP address, browser type, visited pages, time and date of visit, and time spent on pages. This data helps us optimize site performance and content.",
+      title: "Information We Collect",
+      desc: "We collect the following types of information:",
+      list: [
+        "Personal Information: This includes your name, email address, phone number, and any other details you provide when filling out a contact form, requesting a quote, or subscribing to updates.",
+        "Non-Personal Information: When you visit our website, we automatically collect technical information such as your IP address, browser type, device information, and browsing activity.",
+      ],
+      numberList: true,
     },
     {
       title: "Cookies",
-      desc: "Cookies are small files used to store information such as your preferences or anonymous session data. These help us personalize your experience and improve functionality. You can accept or reject cookies via your browser settings.",
+      desc: "Secure Fences uses cookies to enhance your browsing experience and collect analytics data. Cookies are small files placed on your device that help us understand how visitors use our website. You can manage your cookie settings through your browser preferences.",
     },
     {
-      title: "Service Providers",
-      desc: "We may work with trusted third-party providers for:",
+      title: "How We Use Your Information",
       list: [
-        "Scheduling and appointment tools;",
-        "Payment processing;",
-        "Analytics and performance tracking;",
-        "Customer relationship management.",
+        "Respond to your questions, quote requests, or service inquiries.",
+        "Send you updates, promotions, or newsletters if you’ve subscribed.",
+        "Improve our website's performance, user experience, and security.",
+        "Meet legal requirements and protect our rights and services.",
       ],
-      short_desc:
-        "These partners only access your information to perform tasks on our behalf and are required to follow strict data confidentiality standards.",
     },
     {
-      title: "Cancellation and Refund Policy",
-      desc: "Once a fencing project is scheduled and materials are ordered, cancellations may be subject to fees. Please contact us as soon as possible for any changes or cancellations. Refunds may not be guaranteed after project confirmation.",
+      title: "Sharing Your Information",
+      desc: "We may share personal information with trusted third-party partners who help us operate our website, manage communications, or support our business. These parties are obligated to protect your data and only use it for authorized purposes.",
+      short_desc: "We may also disclose your information if required by law or to respond to legal processes such as subpoenas or court orders.",
     },
     {
-      title: "Information Protection",
-      desc: "We are committed to safeguarding your personal data. However, no method of online transmission or storage is completely secure. We implement best practices but cannot guarantee absolute protection.",
+      title: "External Links",
+      desc: "Our website may include links to third-party websites. We are not responsible for the privacy practices or content of those external sites.",
     },
     {
-      title: "Changes to Our Privacy Policy",
-      desc: "We may update this Privacy Policy periodically. Changes will be posted here and become effective immediately upon publication.",
+      title: "Data Security",
+      desc: "We take reasonable and appropriate measures to safeguard the personal information we collect. However, please note that no method of online transmission or storage is 100% secure.",
+    },
+    {
+      title: "Updates to This Policy",
+      desc: "We may update this Privacy Policy occasionally to reflect changes in our practices or legal requirements. Any updates will be posted on this page, with the “Last Updated” date clearly indicated.",
+    },
+    {
+      title: "Contact Us",
+      desc: "If you have any questions or concerns about this Privacy Policy, please contact us at:",
+      list: ["📧 office@secfences.com"],
     },
   ];
 

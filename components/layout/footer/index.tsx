@@ -47,13 +47,18 @@ const Footer = () => {
               <IconEmail />
               {contactInfo.email}
             </a>
-            <a
-              href={`tel:${contactInfo.phone}`}
-              className="flex items-center gap-2 max-w-fit group"
-            >
-              <IconPhone />
-              {contactInfo.phone}
-            </a>
+
+            {contactInfo.phones.map((phone, idx) => (
+              <a
+                key={idx}
+                href={`tel:${phone.tel}`}
+                className="flex items-center gap-2 max-w-fit group"
+              >
+                <IconPhone />
+                {phone.label}
+              </a>
+            ))}
+
             <a
               href="https://www.google.com/maps?q=34.1804104,-118.3325323"
               target="_blank"

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+// #001871
 export default {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,7 +12,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#9DC08B",
+        primary: "#001871",
         'primary-60': "rgb(157 192 139 / 60%)",
         'primary-40': "rgb(157 192 139 / 40%)",
         'primary-grey': '#1D2939',
