@@ -8,6 +8,7 @@ import Input from "@/components/common/Input";
 import Button from "@/components/common/Button";
 import emailjs from "@emailjs/browser";
 import SuccessModal from "../common/SuccessModal";
+import Link from "next/link";
 
 type FenceFormValues = {
   full_name: string;
@@ -79,11 +80,11 @@ const FenceLeadSection = ({ onToggleForm }: FenceLeadSectionProps) => {
             </Button>
           </div>
         )}
-        <a href="/portfolio" className="w-[200px] md:w-full">
+        <Link href="/portfolio" className="w-[200px] md:w-full">
           <Button type="button" className="w-full contained">
             Portfolio
           </Button>
-        </a>
+        </Link>
       </div>
 
       {showForm && (
