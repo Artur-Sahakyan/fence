@@ -70,7 +70,7 @@ const Header = () => {
       {/* Logo */}
       <Link
         href="/"
-        className="3xl:[&>img]:!h-20 md:[&>img]:!h-12 md:[&>img]:!w-[120px]"
+        className="[&>img]:!h-[65px] [&>img]:!w-[120px] md:[&>img]:!h-[50px] md:[&>img]:!w-[100px]"
         onClick={() => setHash("")}
       >
         <Image
@@ -78,36 +78,33 @@ const Header = () => {
           alt="SecureFence"
           width={210}
           height={93}
-          className="object-contain object-left"
+          className="object-contain rounded-xl shadow-md bg-white p-1"
         />
-      </Link>
+    </Link>
 
       {/* Nav Links */}
       <nav
         className={`flex items-center gap-5 py-2 px-4 rounded-[100px] box-shadow-nav 3xl:gap-2 xxl:hidden ${
-          headerType === "transparent" ? "bg-white" : "!bg-primary"
+          headerType === "transparent" ? "bg-white" : "bg-white"
         }`}
       >
         {headerRoutes.map((route, idx) => {
           const isHashRoute = route.href.startsWith("/#");
           const isActive = isHashRoute ? hash === route.href : pathname === route.href;
 
+          const base =
+            "text-lg p-2 font-medium 3xl:text-base rounded-[100px] transition-colors duration-200";
+
+          const activeStyle = "bg-primary text-white";
+          const defaultStyle =
+            "bg-white text-primary hover:bg-primary hover:text-white";
+
           return (
             <Link
               key={idx}
               href={route.href}
               onClick={() => handleLinkClick(route.href)}
-              className={`text-lg p-[10px] font-medium 3xl:text-base 3xl:p-1 rounded-[100px] ${
-                isActive ? "" : "headerLink"
-              } ${
-                headerType === "transparent"
-                  ? isActive
-                    ? "bg-primary text-white"
-                    : "bg-white text-black"
-                  : isActive
-                  ? "bg-white text-black"
-                  : "bg-primary text-white"
-              }`}
+              className={`${base} ${isActive ? activeStyle : defaultStyle}`}
             >
               {route.title}
             </Link>
@@ -156,7 +153,7 @@ const Header = () => {
         {/* Mobile Menu Icon */}
         <div
           className={`min-xxl:hidden ${
-            headerType === "transparent" ? "[&_svg>path]:fill-white" : ""
+            headerType === "transparent" ? "[&_svg>path]:fill-white" : "[&_svg>path]:fill-black"
           }`}
         >
           <MenuBar headerRoutes={headerRoutes} />

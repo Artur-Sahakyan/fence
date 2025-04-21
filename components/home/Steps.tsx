@@ -2,26 +2,29 @@
 
 import React from "react";
 import Title from "@/components/common/Title";
+import { CalendarDays, Boxes, Hammer, Wrench } from "lucide-react";
 
 const Steps = () => {
+
   const steps = [
     {
-      icon: "📅", // Schedule
+      icon: <CalendarDays className="w-6 h-6 text-primary" />,
       text: "Schedule a Free On-Site Consultation",
     },
     {
-      icon: "🧱", // Choose materials
+      icon: <Boxes className="w-6 h-6 text-primary" />,
       text: "Choose Fence Style & Materials",
     },
     {
-      icon: "🏗️", // Fabrication
+      icon: <Hammer className="w-6 h-6 text-primary" />,
       text: "Fabrication for your project",
     },
     {
-      icon: "🔧", // Installation
+      icon: <Wrench className="w-6 h-6 text-primary" />,
       text: "Professional Installation",
     },
   ];
+  
 
   return (
     <div
@@ -33,7 +36,7 @@ const Steps = () => {
         {steps.map((item, idx) => (
           <div key={idx} className="flex flex-col items-center gap-3 relative">
             <div className="rounded-full border-2 border-primary flex justify-center items-center w-[66px] h-[66px] min-w-[66px] text-2xl">
-              {item.icon}
+              <span className="text-primary">{item.icon}</span>
               {idx !== 0 && (
                 <div className="h-1 w-2/3 bg-primary absolute top-auto right-[72%] md:h-9 md:w-1 md:-top-11 md:right-[unset]" />
               )}

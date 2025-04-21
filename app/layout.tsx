@@ -29,7 +29,7 @@ export const metadata = {
     "pacific vinyl",
     "k star vinyl",
     "alumission",
-    "globusgatess"
+    "globusgates1"
   ]
 };
 
