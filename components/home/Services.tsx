@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import Title from "@/components/common/Title";
-import FenceLeadSection, { FenceLeadSectionRef } from "./Form";
-import Button from "@/components/common/Button";
-import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 import {
   PanelTopClose,
   Boxes,
@@ -13,71 +13,109 @@ import {
   Layers,
   Cog,
 } from "lucide-react";
+import Title from "@/components/common/Title";
+
+const materials = [
+  { label: "Vinyl", icon: PanelTopClose },
+  { label: "Aluminum", icon: Boxes },
+  { label: "Wood", icon: TreePine },
+  { label: "Chain Link", icon: LinkIcon },
+  { label: "Composite", icon: Layers },
+  { label: "Metal Powder Coated", icon: Cog },
+];
 
 const Services = () => {
-  const materials = [
-    { label: "Vinyl", icon: <PanelTopClose className="text-primary w-10 h-10" /> },
-    { label: "Aluminum", icon: <Boxes className="text-primary w-10 h-10" /> },
-    { label: "Wood", icon: <TreePine className="text-primary w-10 h-10" /> },
-    { label: "Chain Link", icon: <LinkIcon className="text-primary w-10 h-10" /> },
-    { label: "Composite", icon: <Layers className="text-primary w-10 h-10" /> },
-    { label: "Metal Powder Coated", icon: <Cog className="text-primary w-10 h-10" /> },
-  ];
-
-  const fenceRef = useRef<FenceLeadSectionRef>(null);
-  const [formOpen, setFormOpen] = useState(false);
-
-  const handleOpenQuote = () => {
-    fenceRef.current?.openForm();
-    setFormOpen(true);
-  };
-
   return (
-    <div id="services" className="scrollTopMargin">
-      {/* Modal Form */}
-      <FenceLeadSection
-        ref={fenceRef}
-        onToggleForm={(open) => setFormOpen(open)}
-      />
+    <section
+      id="services"
+      className="scrollTopMargin relative z-10 px-4  bg-gradient-to-b from-[#f7f9fb] to-white"
+    >
+      <div className="max-w-6xl mx-auto text-center">
+        <Title>Material Options</Title>
+        <p className="text-[22px] mb-12 xl:text-lg md:text-base text-primary-grey">
+          Choose from a wide variety of durable and stylish fencing materials.
+        </p>
 
-      {/* Buttons Section */}
-      {!formOpen && (
-        <div className="flex flex-col items-center gap-4 mb-10">
-          <Title>Ready to get started? Request a quote</Title>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button
-              type="button"
-              onClick={handleOpenQuote}
-              className="contained px-8 py-3 text-lg rounded-full"
-            >
-              Quote
-            </Button>
-            <Link href="/portfolio">
-              <Button className="contained px-8 py-3 text-lg rounded-full">
-                Portfolio
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
-
-      {/* Material Options */}
-      <Title>Material Options</Title>
-      <p className="text-[22px] mb-7 xl:text-lg xl:text-center md:text-sm text-primary-grey text-center">
-        Choose from a wide variety of durable and stylish fencing materials.
-      </p>
-      <div className="grid grid-cols-3 gap-6 xl:gap-4 md:grid-cols-2 sm:grid-cols-1">
-        {materials.map((material, idx) => (
-          <div
-            key={idx}
-            className="shadow-service rounded-2xl p-6 bg-white text-black text-xl xl:text-base text-center flex flex-col items-center gap-4"
+        <div className="relative overflow-hidden px-6 md:px-0">
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              nextEl: ".swiper-next",
+              prevEl: ".swiper-prev",
+            }}
+            loop={false}
+            spaceBetween={30}
+            breakpoints={{
+              0: {
+                slidesPerView: 1.2,
+                centeredSlides: true,
+              },
+              640: {
+                slidesPerView: 2,
+                centeredSlides: false,
+              },
+              1024: {
+                slidesPerView: 3,
+                centeredSlides: false,
+              },
+            }}
+            className="!overflow-visible"
           >
-            <span>{material.icon}</span>
-            <p>{material.label}</p>
-          </div>
-        ))}
+            {materials.map(({ label, icon: Icon }) => (
+              <SwiperSlide key={label}>
+                <div className="mb-[8px] mt-[8px] bg-white border border-gray-100 rounded-3xl p-8 shadow-md hover:shadow-xl hover:-translate-y-1 hover:border-primary/30 transition-all duration-300 ease-out flex flex-col items-center text-center h-full">
+                  <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <Icon className=" w-10 h-10 text-primary" />
+                  </div>
+                  <p className="text-lg font-semibold text-gray-800">
+                    {label}
+                  </p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+{/* Left Arrow */}
+<button
+  className="lg:hidden ml-[25px] swiper-next absolute -left-6 top-1/2 -translate-y-1/2 z-[50] w-10 h-10 rounded-full bg-white border border-primary text-primary shadow flex items-center justify-center hover:bg-primary hover:text-white transition pointer-events-auto"
+  >
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-5 h-5"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+  </svg>
+</button>
+
+
+
+{/* Right Arrow */}
+<button
+  className="lg:hidden mr-[25px] swiper-next absolute -right-6 top-1/2 -translate-y-1/2 z-[50] w-10 h-10 rounded-full bg-white border border-primary text-primary shadow flex items-center justify-center hover:bg-primary hover:text-white transition pointer-events-auto"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-5 h-5"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M9 5l7 7-7 7"
+    />
+  </svg>
+</button>
+
+
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

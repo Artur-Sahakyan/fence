@@ -10,6 +10,8 @@ import { contactInfo } from "@/utils/data/contactInfo";
 import IconPhone from "@/components/icons/IconPhone";
 import MenuBar from "@/components/layout/header/MenuBar";
 import useHash from "@/utils/hooks/useHash";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 const Header = () => {
   const router = useRouter();
@@ -136,19 +138,28 @@ const Header = () => {
         </button>
 
         {/* Dropdown List */}
-        {showDropdown && (
-          <div className="absolute top-[calc(100%+8px)] right-0 bg-white border shadow-md rounded-md z-50 min-w-[180px]">
-            {contactInfo.phones.map((phone, idx) => (
-              <a
-                key={idx}
-                href={`tel:${phone.tel}`}
-                className="block px-4 py-2 text-sm text-black hover:bg-gray-100 whitespace-nowrap"
-              >
-                {phone.label}
-              </a>
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {showDropdown && (
+            <motion.div
+              key="dropdown"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute top-[calc(100%+10px)] right-0 z-50 bg-white rounded-xl border border-gray-200 shadow-lg min-w-[200px] overflow-hidden"
+            >
+              {contactInfo.phones.map((phone, idx) => (
+                <a
+                  key={idx}
+                  href={`tel:${phone.tel}`}
+                  className="block px-5 py-3 text-base font-medium text-primary hover:bg-primary hover:text-white transition-all duration-200"
+                >
+                  {phone.label}
+                </a>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Mobile Menu Icon */}
         <div
