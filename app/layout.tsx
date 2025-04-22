@@ -1,4 +1,4 @@
-import Script from "next/script"; // 👈 Add this if not already
+import Script from "next/script";
 import { ToastContainer } from "react-toastify";
 import Layout from "@/components/layout";
 import { Montserrat } from "next/font/google";
