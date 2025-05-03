@@ -1,3 +1,4 @@
+// ✅ app/layout.tsx (SEO Optimized Root Layout)
 import Script from "next/script";
 import { ToastContainer } from "react-toastify";
 import Layout from "@/components/layout";
@@ -14,7 +15,8 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "SecureFence | Vinyl & Privacy Fence Installation in Los Angeles",
-  description: "Affordable vinyl, privacy, picket, aluminum, and rolling gate fence installation services in Los Angeles.",
+  description:
+    "Affordable vinyl, privacy, picket, aluminum, and rolling gate fence installation services in Los Angeles.",
   keywords: [
     "vinyl fence",
     "fencing",
@@ -29,15 +31,42 @@ export const metadata = {
     "pacific vinyl",
     "k star vinyl",
     "alumission",
-    "globusgates1"
-  ]
+    "globusgates"
+  ],
+  icons: {
+    icon: "/favicon.ico"
+  },
+  openGraph: {
+    title: "SecureFence | Vinyl & Privacy Fence Installation in Los Angeles",
+    description:
+      "Affordable vinyl, privacy, picket, aluminum, and rolling gate fence installation services in Los Angeles.",
+    url: "https://secfences.com",
+    siteName: "SecureFence",
+    images: [
+      {
+        url: "https://secfences.com/images/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "SecureFence preview image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SecureFence | Vinyl & Privacy Fence Installation in Los Angeles",
+    description:
+      "Affordable vinyl, privacy, picket, aluminum, and rolling gate fence installation services in Los Angeles.",
+    images: ["https://secfences.com/images/banner.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* ✅ Google Analytics Tag */}
+        {/* ✅ Google Analytics */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-WR9Z8V707Q"
