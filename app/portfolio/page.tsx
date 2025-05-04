@@ -1,63 +1,75 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Title from "@/components/common/Title";
+import { useRouter } from "next/navigation";
 
 const portfolioItems = [
   {
+    id: 1,
     title: "Vinyl Fence Installation",
     image: "/images/fence-vinyl.jpg",
     description: "A durable white vinyl fence designed for privacy and low maintenance.",
   },
   {
+    id: 2,
     title: "Wooden Fence Project",
     image: "/images/fence-wood.jpg",
     description: "A rustic wood fence for a warm, natural look around your home.",
   },
   {
+    id: 3,
     title: "Fence Summary Showcase",
     image: "/images/fence-summary.jpg",
     description: "Various types of fences installed on different properties.",
   },
   {
+    id: 4,
     title: "Modern Vinyl Build",
     image: "/images/ence-vinyl.jpg",
     description: "Modern vinyl fence that complements a contemporary home.",
   },
   {
+    id: 5,
     title: "Premium Backyard Fence",
     image: "/images/fance1.jpeg",
     description: "Premium backyard wood fence providing privacy and beauty.",
   },
   {
+    id: 6,
     title: "Clean White Fence Finish",
     image: "/images/engine.png",
     description: "Sleek white vinyl fence surrounding a home garden.",
   },
+  {
+    id: 7,
+    title: "Classic Fence Style",
+    image: "/images/fence.png",
+    description: "Traditional fence design with sturdy materials and clean finish.",
+  },
+  {
+    id: 8,
+    title: "Next-Gen Vinyl Fence",
+    image: "/images/newFence.png",
+    description: "Modern, durable fence design with next-gen materials.",
+  },
+  {
+    id: 9,
+    title: "Stylish Privacy Fence",
+    image: "/images/fance2.jpeg",
+    description: "Elegant privacy fencing with natural wood aesthetics.",
+  },
+  {
+    id: 10,
+    title: "Engineered Fence Concept",
+    image: "/images/engine.png",
+    description: "A showcase of engineered fencing used in various installations.",
+  },
 ];
 
 export default function PortfolioPage() {
-  const [selectedItem, setSelectedItem] = useState<null | typeof portfolioItems[0]>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        setSelectedItem(null);
-      }
-    }
-
-    if (selectedItem) {
-      document.body.style.overflow = "hidden"; // prevent background scroll
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [selectedItem]);
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-[#FCFCFC] padding-m padding-vertical">
@@ -67,11 +79,10 @@ export default function PortfolioPage() {
       </p>
 
       <div className="grid grid-cols-3 gap-8 md:grid-cols-2 sm:grid-cols-1">
-        {portfolioItems.map((item, idx) => (
+        {portfolioItems.map((item) => (
           <div
-            key={idx}
-            onClick={() => setSelectedItem(item)}
-            className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
+            key={item.id}
+            className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-[1.02] transition-transform flex flex-col"
           >
             <Image
               src={item.image}
@@ -80,48 +91,19 @@ export default function PortfolioPage() {
               height={400}
               className="w-full h-[250px] object-cover"
             />
-            <div className="p-4">
+            <div className="p-4 flex flex-col flex-grow">
               <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-600">{item.description}</p>
+              <p className="text-sm text-gray-600 flex-grow">{item.description}</p>
+              <button
+                onClick={() => router.push(`/portfolio/${item.id}`)}
+                className="mt-4 text-white font-medium py-2 px-4 rounded-md transition-colors bg-primary"
+              >
+                View Details →
+              </button>
             </div>
           </div>
         ))}
       </div>
-
-      {selectedItem && (
-  <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center p-4">
-    <div
-      ref={modalRef}
-      className="relative bg-white rounded-xl shadow-xl w-full max-w-6xl h-auto max-h-[95vh] overflow-auto flex flex-col"
-    >
-      {/* Close Button */}
-      <button
-        onClick={() => setSelectedItem(null)}
-        className="absolute top-4 right-4 bg-white bg-opacity-90 rounded-full p-2 hover:bg-opacity-100 transition-colors z-10"
-        aria-label="Close Modal"
-      >
-        <span className="text-black text-xl font-bold">✕</span>
-      </button>
-
-      {/* Fullscreen Image */}
-      <div className="w-full h-[60vh] sm:h-[70vh] relative">
-        <Image
-          src={selectedItem.image}
-          alt={selectedItem.title}
-          fill
-          className="object-cover rounded-t-xl"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="p-6 sm:p-4">
-        <h3 className="text-2xl font-bold mb-3 sm:text-xl">{selectedItem.title}</h3>
-        <p className="text-gray-700 text-base sm:text-sm">{selectedItem.description}</p>
-      </div>
-    </div>
-  </div>
-)}
-
     </div>
   );
 }

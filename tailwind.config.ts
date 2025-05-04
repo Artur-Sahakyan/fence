@@ -12,8 +12,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#001871",
-        'primary-60': "rgb(157 192 139 / 60%)",
+        primary: "#334190",    //#001871 same as primary 60
+        'primary-60': "#334190",
         'primary-40': "rgb(157 192 139 / 40%)",
         'primary-grey': '#1D2939',
         'gray-50': 'rgba(0,0,0,.5)',
